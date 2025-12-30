@@ -17,8 +17,8 @@ export interface AuthResponse {
   user: {
     id: string;
     email: string;
-    firstName: string;
-    lastName: string;
+    firstName?: string;
+    lastName?: string;
     role: "CREATOR" | "CLIPPER";
   };
   token: string;
@@ -35,16 +35,22 @@ export const authService = {
 
   login(token: string, user: AuthResponse['user']): void {
     localStorage.setItem("token", token);
+    localStorage.setItem("role", user.role);
     localStorage.setItem("user", JSON.stringify(user));
   },
 
   logout(): void {
     localStorage.removeItem("token");
+    localStorage.removeItem("role");
     localStorage.removeItem("user");
   },
 
   getToken(): string | null {
     return localStorage.getItem("token");
+  },
+
+  getRole(): string | null {
+    return localStorage.getItem("role");
   },
 
   getUser(): AuthResponse['user'] | null {

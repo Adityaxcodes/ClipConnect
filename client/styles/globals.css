@@ -2,6 +2,69 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Font System */
+@layer base {
+    body {
+        @apply font-body;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+        @apply font-heading;
+    }
+
+    /* Page Title (H1): 32-36px | 700 */
+    h1 {
+        @apply text-3xl md:text-4xl font-bold;
+    }
+
+    /* Section Title (H2): 22-24px | 600 */
+    h2 {
+        @apply text-xl md:text-2xl font-semibold;
+    }
+
+    /* Card Title (H3): 16-18px | 600 */
+    h3 {
+        @apply text-base md:text-lg font-semibold;
+    }
+
+    /* Body Text: 14-16px | 400 */
+    body, p {
+        @apply text-sm md:text-base font-normal;
+    }
+
+    /* Buttons: 14-16px | 500 */
+    button {
+        @apply text-sm md:text-base font-medium;
+    }
+}
+
+@layer utilities {
+    /* Typography Utilities */
+    .text-page-title {
+        @apply text-3xl md:text-4xl font-bold font-heading;
+    }
+
+    .text-section-title {
+        @apply text-xl md:text-2xl font-semibold font-heading;
+    }
+
+    .text-card-title {
+        @apply text-base md:text-lg font-semibold font-heading;
+    }
+
+    .text-body {
+        @apply text-sm md:text-base font-normal font-body;
+    }
+
+    .text-muted {
+        @apply text-xs md:text-sm font-normal font-body;
+    }
+
+    .text-button {
+        @apply text-sm md:text-base font-medium font-body;
+    }
+}
+
 .custom-screen {
     @apply max-w-screen-xl mx-auto px-4 md:px-8;
 }

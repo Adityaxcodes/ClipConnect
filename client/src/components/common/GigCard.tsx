@@ -118,7 +118,7 @@ export default function GigCard({ gig, variant = "clipper" }: GigCardProps) {
       )}
       <CardHeader className="pb-2 pt-4 px-5 flex-col items-start gap-2">
         <div className="flex w-full justify-between items-start">
-          <h4 className="font-bold text-xl text-white">{gig.title}</h4>
+          <h4 className="text-card-title text-white">{gig.title}</h4>
           {variant === "creator" && gig.status && (
             <Chip color={getStatusColor(gig.status)} size="sm" variant="flat">
               {gig.status}
@@ -137,32 +137,32 @@ export default function GigCard({ gig, variant = "clipper" }: GigCardProps) {
       </CardHeader>
 
       <CardBody className="py-3 px-5">
-        <div className="flex flex-col gap-2 text-sm">
+        <div className="flex flex-col gap-2">
           <div className="flex justify-between items-center">
-            <span className="text-gray-400">Pay:</span>
-            <span className="font-semibold text-green-400 text-lg">
+            <span className="text-muted text-gray-400">Pay:</span>
+            <span className="text-card-title text-green-400">
               ${gig.pay}
             </span>
           </div>
 
           {variant === "clipper" && gig.creator && (
             <div className="flex justify-between items-center">
-              <span className="text-gray-400">Creator:</span>
-              <span className="text-white font-medium">{gig.creator.email}</span>
+              <span className="text-muted text-gray-400">Creator:</span>
+              <span className="text-body text-white">{gig.creator.email}</span>
             </div>
           )}
 
           {variant === "creator" && gig.applicants !== undefined && (
             <div className="flex justify-between items-center">
-              <span className="text-gray-400">Applicants:</span>
-              <span className="text-blue-400 font-medium">{gig.applicants}</span>
+              <span className="text-muted text-gray-400">Applicants:</span>
+              <span className="text-body text-blue-400">{gig.applicants}</span>
             </div>
           )}
 
           {gig.createdAt && (
             <div className="flex justify-between items-center">
-              <span className="text-gray-400">Posted:</span>
-              <span className="text-gray-300 text-xs">
+              <span className="text-muted text-gray-400">Posted:</span>
+              <span className="text-muted text-gray-300">
                 {new Date(gig.createdAt).toLocaleDateString()}
               </span>
             </div>
@@ -178,7 +178,7 @@ export default function GigCard({ gig, variant = "clipper" }: GigCardProps) {
           <button
             onClick={handleApply}
             disabled={isApplying || hasApplied}
-            className={`w-full font-semibold py-2.5 rounded-xl transition-all duration-200
+            className={`text-button w-full py-2.5 rounded-xl transition-all duration-200
               ${
                 hasApplied
                   ? "bg-gray-700 cursor-not-allowed"
@@ -196,7 +196,7 @@ export default function GigCard({ gig, variant = "clipper" }: GigCardProps) {
         {variant === "creator" && (
           <button
             onClick={handleViewApplications}
-            className="w-full font-semibold py-2.5 rounded-xl transition-all duration-200 bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800"
+            className="text-button w-full py-2.5 rounded-xl transition-all duration-200 bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800"
           >
             View Applications
           </button>

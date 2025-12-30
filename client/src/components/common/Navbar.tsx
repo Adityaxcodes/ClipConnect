@@ -22,18 +22,18 @@ export function Navbar({ className }: { className?: string }) {
       <Menu setActive={setActive}>
         <div className="flex items-center space-x-2 mr-4">
           <img src={logo} alt="ClipConnect" className="h-6 w-6" />
-          <span className="font-bold text-black dark:text-white">ClipConnect</span>
+          <span className="text-card-title text-black dark:text-white">ClipConnect</span>
         </div>
         
         <MenuItem setActive={setActive} active={active} item="Dashboard">
-          <div className="flex flex-col space-y-4 text-sm">
+          <div className="flex flex-col space-y-4">
             <HoveredLink to="/creator/dashboard">Creator Dashboard</HoveredLink>
             <HoveredLink to="/clipper/dashboard">Clipper Dashboard</HoveredLink>
           </div>
         </MenuItem>
         
         <MenuItem setActive={setActive} active={active} item="Gigs">
-          <div className="flex flex-col space-y-4 text-sm">
+          <div className="flex flex-col space-y-4">
             <HoveredLink to="/gigs">Browse Gigs</HoveredLink>
             <HoveredLink to="/my-gigs">My Gigs</HoveredLink>
             <HoveredLink to="/create-gig">Create Gig</HoveredLink>
@@ -41,12 +41,12 @@ export function Navbar({ className }: { className?: string }) {
         </MenuItem>
         
         <MenuItem setActive={setActive} active={active} item="Account">
-          <div className="flex flex-col space-y-4 text-sm">
+          <div className="flex flex-col space-y-4">
             <HoveredLink to="/profile">Profile</HoveredLink>
             <HoveredLink to="/settings">Settings</HoveredLink>
             <button
               onClick={handleLogout}
-              className="text-left text-neutral-700 dark:text-neutral-200 hover:text-black dark:hover:text-white"
+              className="text-body text-left text-neutral-700 dark:text-neutral-200 hover:text-black dark:hover:text-white"
             >
               Logout
             </button>

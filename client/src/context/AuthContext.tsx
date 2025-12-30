@@ -1,9 +1,15 @@
-import { createContext, useContext, useEffect, useState, ReactNode } from "react";
+import {
+  createContext,
+  useContext,
+  useEffect,
+  useState,
+  ReactNode,
+} from "react";
 import { authService } from "../services/auth.service";
 
-type Role = "CREATOR" | "CLIPPER";
+export type Role = "CREATOR" | "CLIPPER";
 
-type User = {
+export type User = {
   id: string;
   email: string;
   firstName: string;
@@ -20,31 +26,44 @@ type AuthContextType = {
   logout: () => void;
 };
 
-const AuthContext = createContext<AuthContextType | null>(null);
+const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 export const AuthProvider = ({ children }: { children: ReactNode }) => {
   const [user, setUser] = useState<User | null>(null);
   const [token, setToken] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(true);
 
+  /**
+   * Restore auth state on page refresh
+   */
   useEffect(() => {
-    const storedToken = authService.getToken();
-    const storedUser = authService.getUser();
+    const restoreAuth = () => {
+      const storedToken = authService.getToken();
+      const storedUser = authService.getUser();
 
-    if (storedToken && storedUser) {
-      setToken(storedToken);
-      setUser(storedUser);
-    }
+      if (storedToken && storedUser) {
+        setToken(storedToken);
+        setUser(storedUser);
+      }
 
-    setIsLoading(false);
+      setIsLoading(false);
+    };
+
+    restoreAuth();
   }, []);
 
+  /**
+   * Login handler
+   */
   const login = (token: string, user: User) => {
     authService.login(token, user);
     setToken(token);
     setUser(user);
   };
 
+  /**
+   * Logout handler
+   */
   const logout = () => {
     authService.logout();
     setToken(null);
@@ -56,7 +75,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
       value={{
         user,
         token,
-        isAuthenticated: !!token,
+        isAuthenticated: Boolean(token),
         isLoading,
         login,
         logout,
@@ -67,10 +86,13 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   );
 };
 
+/**
+ * Hook
+ */
 export const useAuth = () => {
   const context = useContext(AuthContext);
   if (!context) {
-    throw new Error("useAuth must be used inside AuthProvider");
+    throw new Error("useAuth must be used within an AuthProvider");
   }
   return context;
 };

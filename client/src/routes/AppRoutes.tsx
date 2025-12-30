@@ -14,6 +14,7 @@ import GigDetails from "../pages/creator/gigDetails";
 import ClipperDashboard from "../pages/clipper/Dashboard";
 import ClipperAllGigs from "../pages/clipper/allgigs";
 import ClipperMyGigs from "../pages/clipper/mygigs";
+import ApplicationDetail from "../pages/clipper/applicationDetail";
 
 function AppRoutes() {
   return (
@@ -82,6 +83,14 @@ function AppRoutes() {
           element={
             <ProtectedRoute role="CLIPPER">
               <ClipperMyGigs />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/clipper/application/:id"
+          element={
+            <ProtectedRoute role="CLIPPER">
+              <ApplicationDetail />
             </ProtectedRoute>
           }
         />

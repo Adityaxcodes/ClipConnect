@@ -5,6 +5,8 @@ import {
   getGigApplications,
   getMyApplications,
   updateApplicationStatus,
+  submitVideo,
+  getApplicationDetail,
 } from "../controllers/application.controller";
 import { authenticate } from "../middleware/auth.middleware";
 import { authorizeRoles } from "../middleware/role.middleware";
@@ -49,6 +51,22 @@ router.patch(
   authenticate,
   authorizeRoles("CREATOR"),
   updateApplicationStatus
+);
+
+// Clipper gets application detail
+router.get(
+  "/:id",
+  authenticate,
+  authorizeRoles("CLIPPER"),
+  getApplicationDetail
+);
+
+// Clipper submits video for application
+router.post(
+  "/:id/submit",
+  authenticate,
+  authorizeRoles("CLIPPER"),
+  submitVideo
 );
 
 export default router;

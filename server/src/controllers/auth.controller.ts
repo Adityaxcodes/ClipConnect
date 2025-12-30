@@ -9,7 +9,7 @@ import { generateToken } from "../utils/jwt";
  */
 export const signup = async (req: Request, res: Response) => {
   try {
-    const { email, password, role } = req.body;
+    const { email, password, role, firstName, lastName } = req.body;
 
     if (!email || !password || !role) {
       return res.status(400).json({
@@ -37,6 +37,8 @@ export const signup = async (req: Request, res: Response) => {
       email,
       password: hashedPassword,
       role,
+      firstName,
+      lastName,
     });
 
     const token = generateToken({
@@ -51,11 +53,15 @@ export const signup = async (req: Request, res: Response) => {
         id: user._id,
         email: user.email,
         role: user.role,
+        firstName: user.firstName,
+        lastName: user.lastName,
       },
     });
   } catch (error) {
+    console.error("❌ Signup error:", error);
     return res.status(500).json({
       message: "Signup failed",
+      error: error instanceof Error ? error.message : "Unknown error",
     });
   }
 };
@@ -105,6 +111,8 @@ export const login = async (req: Request, res: Response) => {
         id: user._id,
         email: user.email,
         role: user.role,
+        firstName: user.firstName,
+        lastName: user.lastName,
       },
     });
   } catch (error) {

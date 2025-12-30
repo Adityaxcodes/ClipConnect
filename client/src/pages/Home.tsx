@@ -15,7 +15,7 @@ export default function Home() {
           onClick={() => navigate("/login")}
         >
           <span className="text-xl">&gt;</span>
-          <span className="text-sm font-medium">Login</span>
+          <span className="text-button">Login</span>
         </HoverBorderGradient>
         
         <HoverBorderGradient
@@ -25,12 +25,12 @@ export default function Home() {
           onClick={() => navigate("/signup")}
         >
           <span className="text-xl">&gt;</span>
-          <span className="text-sm font-medium">Sign Up</span>
+          <span className="text-button">Sign Up</span>
         </HoverBorderGradient>
       </div>
 
-      <div className="absolute z-50 inset-0 flex items-center justify-center text-white font-bold px-4 pointer-events-none text-3xl text-center md:text-4xl lg:text-7xl">
-        <p className="bg-clip-text text-transparent drop-shadow-2xl bg-gradient-to-b from-white/80 to-white/20">
+      <div className="absolute z-50 inset-0 flex items-center justify-center text-white px-4 pointer-events-none text-center">
+        <p className="text-page-title md:text-[4rem] lg:text-[5.5rem] font-heading bg-clip-text text-transparent drop-shadow-2xl bg-gradient-to-b from-white/80 to-white/20">
           ClipConnect
         </p>
       </div>

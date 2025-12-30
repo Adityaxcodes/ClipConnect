@@ -9,7 +9,7 @@ import { AuthRequest } from "../middleware/auth.middleware";
  */
 export const createGig = async (req: AuthRequest, res: Response) => {
   try {
-    const { title, description, pay, requirements, difficulty } = req.body;
+    const { title, description, pay, requirements, difficulty, image, imagePublicId } = req.body;
 
     if (!title || !description || !pay || !requirements || !difficulty) {
       return res.status(400).json({
@@ -27,6 +27,8 @@ export const createGig = async (req: AuthRequest, res: Response) => {
       pay,
       requirements,
       difficulty: capitalizedDifficulty,
+      image: image || undefined,
+      imagePublicId: imagePublicId || undefined,
     });
 
     return res.status(201).json({
@@ -50,12 +52,15 @@ export const createGig = async (req: AuthRequest, res: Response) => {
 export const getAllOpenGigs = async (_req: AuthRequest, res: Response) => {
   try {
     const gigs = await Gig.find({ status: "OPEN" })
-      .populate("creator", "email");
+      .populate("creator", "email firstName lastName avatar")
+      .lean();
 
     return res.status(200).json(gigs);
   } catch (error) {
+    console.error("❌ Error fetching gigs:", error);
     return res.status(500).json({
       message: "Failed to fetch gigs",
+      error: error instanceof Error ? error.message : "Unknown error",
     });
   }
 };
@@ -73,8 +78,10 @@ export const getCreatorGigs = async (req: AuthRequest, res: Response) => {
 
     return res.status(200).json(gigs);
   } catch (error) {
+    console.error("❌ Error fetching creator gigs:", error);
     return res.status(500).json({
       message: "Failed to fetch creator gigs",
+      error: error instanceof Error ? error.message : "Unknown error",
     });
   }
 };

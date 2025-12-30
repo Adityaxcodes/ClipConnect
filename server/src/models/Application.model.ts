@@ -10,6 +10,10 @@ export interface IApplication extends Document {
     | "WORKING"
     | "DONE"
     | "CLIPPER_DROPPED";
+  submittedVideo?: string; // Cloudinary video URL
+  videoPublicId?: string; // Cloudinary public ID for deletion
+  submittedAt?: Date;
+  reviewNote?: string; // Creator's review feedback
 }
 
 const ApplicationSchema = new Schema<IApplication>(
@@ -35,6 +39,22 @@ const ApplicationSchema = new Schema<IApplication>(
         "CLIPPER_DROPPED",
       ],
       default: "PENDING",
+    },
+    submittedVideo: {
+      type: String,
+      required: false,
+    },
+    videoPublicId: {
+      type: String,
+      required: false,
+    },
+    submittedAt: {
+      type: Date,
+      required: false,
+    },
+    reviewNote: {
+      type: String,
+      required: false,
     },
   },
   { timestamps: true }

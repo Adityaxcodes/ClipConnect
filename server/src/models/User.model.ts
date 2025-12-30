@@ -4,6 +4,8 @@ export interface IUser extends Document {
   email: string;
   password: string;
   role: "CREATOR" | "CLIPPER";
+  firstName?: string;
+  lastName?: string;
 }
 
 const UserSchema = new Schema<IUser>(
@@ -23,6 +25,14 @@ const UserSchema = new Schema<IUser>(
       type: String,
       enum: ["CREATOR", "CLIPPER"],
       required: true,
+    },
+    firstName: {
+      type: String,
+      trim: true,
+    },
+    lastName: {
+      type: String,
+      trim: true,
     },
   },
   { timestamps: true }

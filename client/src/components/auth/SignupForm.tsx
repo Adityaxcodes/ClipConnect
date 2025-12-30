@@ -58,10 +58,10 @@ export function SignupForm() {
   
   return (
     <div className="mx-auto w-full max-w-md rounded-none bg-white p-4 shadow-[var(--shadow-input)] md:rounded-2xl md:p-8 dark:bg-black">
-      <h2 className="text-xl font-bold text-neutral-800 dark:text-neutral-200">
+      <h2 className="text-section-title text-neutral-800 dark:text-neutral-200">
         Welcome to ClipConnect
       </h2>
-      <p className="mt-2 max-w-sm text-sm text-neutral-600 dark:text-neutral-300">
+      <p className="text-body mt-2 max-w-sm text-neutral-600 dark:text-neutral-300">
         Sign up to connect with content creators
       </p>
 
@@ -144,7 +144,7 @@ export function SignupForm() {
         </LabelInputContainer>
 
         <button
-          className="group/btn relative block h-10 w-full rounded-md bg-gradient-to-br from-black to-neutral-600 font-medium text-white shadow-[0px_1px_0px_0px_#ffffff40_inset,0px_-1px_0px_0px_#ffffff40_inset] disabled:opacity-50 dark:bg-zinc-800 dark:from-zinc-900 dark:to-zinc-900 dark:shadow-[0px_1px_0px_0px_#27272a_inset,0px_-1px_0px_0px_#27272a_inset]"
+          className="text-button group/btn relative block h-10 w-full rounded-md bg-gradient-to-br from-black to-neutral-600 text-white shadow-[0px_1px_0px_0px_#ffffff40_inset,0px_-1px_0px_0px_#ffffff40_inset] disabled:opacity-50 dark:bg-zinc-800 dark:from-zinc-900 dark:to-zinc-900 dark:shadow-[0px_1px_0px_0px_#27272a_inset,0px_-1px_0px_0px_#27272a_inset]"
           type="submit"
           disabled={loading}
         >

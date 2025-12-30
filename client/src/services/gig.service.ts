@@ -15,8 +15,8 @@ export interface Gig {
   };
   createdAt: string;
   hasApplied?: boolean;
+  image?: string;
 }
-
 
 export interface CreateGigData {
   title: string;
@@ -24,6 +24,8 @@ export interface CreateGigData {
   pay: number;
   difficulty: string;
   requirements: string;
+  image?: string;
+  imagePublicId?: string;
 }
 
 export interface Application {
@@ -35,6 +37,9 @@ export interface Application {
   };
   status: "PENDING" | "ACCEPTED" | "REJECTED" | "WORKING" | "DONE";
   createdAt: string;
+  submittedVideo?: string;
+  submittedAt?: string;
+  reviewNote?: string;
 }
 
 /* ================= SERVICE ================= */
@@ -56,7 +61,9 @@ export const gigService = {
   },
 
   // Clipper: check if already applied to gig
-  checkApplication(gigId: string): Promise<{ hasApplied: boolean; application: Application | null }> {
+  checkApplication(
+    gigId: string,
+  ): Promise<{ hasApplied: boolean; application: Application | null }> {
     return apiClient.get(`/api/applications/check/${gigId}`);
   },
 
@@ -78,8 +85,21 @@ export const gigService = {
   // Creator: update application status
   updateApplicationStatus(
     applicationId: string,
-    status: Application["status"]
+    status: Application["status"],
   ): Promise<Application> {
     return apiClient.patch(`/api/applications/${applicationId}`, { status });
+  },
+
+  // Clipper: get application detail
+  getApplicationDetail(applicationId: string): Promise<Application> {
+    return apiClient.get(`/api/applications/${applicationId}`);
+  },
+
+  // Clipper: submit video for application (with Cloudinary URL)
+  submitVideo(applicationId: string, videoUrl: string, videoPublicId?: string): Promise<Application> {
+    return apiClient.post(`/api/applications/${applicationId}/submit`, {
+      videoUrl,
+      videoPublicId,
+    });
   },
 };

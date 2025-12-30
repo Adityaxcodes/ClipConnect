@@ -8,6 +8,8 @@ export interface IGig extends Document {
   requirements: string;
   difficulty: "Easy" | "Medium" | "Hard";
   status: "OPEN" | "CLOSED";
+  image?: string;
+  imagePublicId?: string;
 }
 
 const GigSchema = new Schema<IGig>(
@@ -43,6 +45,14 @@ const GigSchema = new Schema<IGig>(
       type: String,
       enum: ["OPEN", "CLOSED"],
       default: "OPEN",
+    },
+    image: {
+      type: String,
+      required: false,
+    },
+    imagePublicId: {
+      type: String,
+      required: false,
     },
   },
   { timestamps: true }

@@ -8,20 +8,24 @@ type ProtectedRouteProps = {
 };
 
 const ProtectedRoute = ({ children, role }: ProtectedRouteProps) => {
-  const { isAuthenticated, user, isLoading } = useAuth();
+  const { isLoading } = useAuth();
 
   // ⏳ Wait until auth check finishes
   if (isLoading) {
     return null; // or a loader/spinner
   }
 
-  // ❌ Not logged in
-  if (!isAuthenticated) {
+  // Check localStorage directly for token and role
+  const token = localStorage.getItem("token");
+  const userRole = localStorage.getItem("role");
+
+  // ❌ Not logged in - no token
+  if (!token) {
     return <Navigate to="/login" replace />;
   }
 
-  // ❌ Wrong role
-  if (role && user?.role !== role) {
+  // ❌ Wrong role - role required but doesn't match
+  if (role && userRole !== role) {
     return <Navigate to="/" replace />;
   }
 

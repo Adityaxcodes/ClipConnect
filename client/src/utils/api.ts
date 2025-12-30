@@ -37,8 +37,9 @@ export const api = async (
 
   // Handle 401 Unauthorized - token expired or invalid
   if (response.status === 401 && requiresAuth) {
-    // Clear invalid token
+    // Clear invalid token and role
     localStorage.removeItem("token");
+    localStorage.removeItem("role");
     
     // Redirect to login page
     window.location.href = "/login";
