@@ -1,4 +1,4 @@
-import express from "express";
+import express, { Request, Response, NextFunction } from "express";
 import cors from "cors";
 import { env } from "./config/env";
 import authRoutes from "./routes/auth.routes";
@@ -28,7 +28,7 @@ app.use("/api/gigs", gigRoutes);
 app.use("/api/applications", applicationRoutes);
 app.use("/api/upload", uploadRoutes);
 
-app.get("/health", (_req, res) => {
+app.get("/health", (_req: Request, res: Response) => {
   res.status(200).json({
     status: "OK",
     environment: env.nodeEnv,
@@ -36,7 +36,7 @@ app.get("/health", (_req, res) => {
 });
 
 // Global error handler middleware
-app.use((err: any, _req: express.Request, res: express.Response, _next: express.NextFunction) => {
+app.use((err: any, _req: Request, res: Response, _next: NextFunction) => {
   console.error("❌ Unhandled error:", err);
   res.status(err.status || 500).json({
     message: err.message || "Internal server error",
@@ -45,7 +45,7 @@ app.use((err: any, _req: express.Request, res: express.Response, _next: express.
 });
 
 // 404 handler
-app.use((_req, res) => {
+app.use((_req: Request, res: Response) => {
   res.status(404).json({
     message: "Route not found",
   });

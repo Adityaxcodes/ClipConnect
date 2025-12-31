@@ -43,7 +43,7 @@ export const uploadMultiple = upload.array("files", 10); // Max 10 files
 // Middleware for image upload only
 export const uploadImage = multer({
   storage,
-  fileFilter: (req, file, cb) => {
+  fileFilter: (_req: Request, file: Express.Multer.File, cb: multer.FileFilterCallback) => {
     if (file.mimetype.startsWith("image/")) {
       cb(null, true);
     } else {
@@ -58,7 +58,7 @@ export const uploadImage = multer({
 // Middleware for video upload only
 export const uploadVideo = multer({
   storage,
-  fileFilter: (req, file, cb) => {
+  fileFilter: (_req: Request, file: Express.Multer.File, cb: multer.FileFilterCallback) => {
     if (file.mimetype.startsWith("video/")) {
       cb(null, true);
     } else {
