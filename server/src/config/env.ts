@@ -8,8 +8,8 @@ export const env = {
 
   mongoUri: process.env.MONGODB_URI || "mongodb://localhost:27017/clipconnect",
 
-  jwtSecret: process.env.JWT_SECRET || "fallback_secret",
-  jwtExpiresIn: process.env.JWT_EXPIRES_IN || "7d",
+  jwtSecret: (process.env.JWT_SECRET || "fallback_secret") as string,
+  jwtExpiresIn: (process.env.JWT_EXPIRES_IN || "7d") as string,
 
   clientUrl: process.env.CLIENT_URL || "http://localhost:5174",
 

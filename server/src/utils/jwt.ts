@@ -6,9 +6,9 @@ type TokenPayload = {
   role: "CREATOR" | "CLIPPER";
 };
 
-export const generateToken = (payload: TokenPayload) => {
+export const generateToken = (payload: TokenPayload): string => {
   return jwt.sign(payload, env.jwtSecret, {
-    expiresIn: env.jwtExpiresIn,
+    expiresIn: env.jwtExpiresIn as any,
   });
 };
 
