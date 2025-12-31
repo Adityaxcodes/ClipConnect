@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: clipconnect-server
+    env: node
+    region: oregon
+    plan: free
+    buildCommand: npm install && npm run build
+    startCommand: npm start
+    envVars:
+      - key: NODE_VERSION
+        value: 20.11.0
+      - key: NPM_CONFIG_PRODUCTION
+        value: false
