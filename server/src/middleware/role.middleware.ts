@@ -2,17 +2,19 @@ import { Response, NextFunction } from "express";
 import { AuthRequest } from "./auth.middleware";
 
 export const authorizeRoles = (...allowedRoles: ("CREATOR" | "CLIPPER")[]) => {
-  return (req: AuthRequest, res: Response, next: NextFunction) => {
+  return (req: AuthRequest, res: Response, next: NextFunction): void => {
     if (!req.user) {
-      return res.status(401).json({
+      res.status(401).json({
         message: "Unauthorized",
       });
+      return;
     }
 
     if (!allowedRoles.includes(req.user.role)) {
-      return res.status(403).json({
+      res.status(403).json({
         message: "Forbidden: Access denied",
       });
+      return;
     }
 
     next();

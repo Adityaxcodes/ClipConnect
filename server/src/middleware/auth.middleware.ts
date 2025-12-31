@@ -12,13 +12,14 @@ export const authenticate = (
   req: AuthRequest,
   res: Response,
   next: NextFunction
-) => {
+): void => {
   const authHeader = req.headers.authorization;
 
   if (!authHeader || !authHeader.startsWith("Bearer ")) {
-    return res.status(401).json({
+    res.status(401).json({
       message: "Unauthorized: No token provided",
     });
+    return;
   }
 
   const token = authHeader.split(" ")[1];
@@ -33,7 +34,7 @@ export const authenticate = (
 
     next();
   } catch (error) {
-    return res.status(401).json({
+    res.status(401).json({
       message: "Unauthorized: Invalid or expired token",
     });
   }
