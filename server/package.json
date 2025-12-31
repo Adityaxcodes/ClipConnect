@@ -2,7 +2,11 @@
   "name": "clipconnect-server",
   "version": "1.0.0",
   "description": "ClipConnect backend server - Video editing gig marketplace",
-  "main": "dist/index.js",
+  "main": "dist/server.js",
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=9.0.0"
+  },
   "scripts": {
     "dev": "ts-node-dev --respawn --transpile-only src/server.ts",
     "build": "tsc",
