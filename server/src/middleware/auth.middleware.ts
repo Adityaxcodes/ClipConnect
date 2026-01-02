@@ -1,17 +1,11 @@
-import { Request, Response, NextFunction } from "express";
+import { Response, NextFunction } from "express";
 import { verifyToken } from "../utils/jwt";
-
-export interface AuthRequest extends Request {
-  user?: {
-    userId: string;
-    role: "CREATOR" | "CLIPPER";
-  };
-}
+import { AuthRequest } from "../types/express";
 
 export const authenticate = (
   req: AuthRequest,
   res: Response,
-  next: NextFunction
+  next: NextFunction,
 ): void => {
   const authHeader = req.headers.authorization;
 

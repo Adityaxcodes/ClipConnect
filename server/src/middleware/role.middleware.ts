@@ -1,5 +1,5 @@
 import { Response, NextFunction } from "express";
-import { AuthRequest } from "./auth.middleware";
+import { AuthRequest } from "../types/express";
 
 export const authorizeRoles = (...allowedRoles: ("CREATOR" | "CLIPPER")[]) => {
   return (req: AuthRequest, res: Response, next: NextFunction): void => {

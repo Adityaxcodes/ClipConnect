@@ -1,6 +1,6 @@
 import { Response } from "express";
 import Gig from "../models/Gig.model";
-import { AuthRequest } from "../middleware/auth.middleware";
+import { AuthRequest } from "../types/express";
 
 /**
  * CREATE GIG
@@ -9,7 +9,15 @@ import { AuthRequest } from "../middleware/auth.middleware";
  */
 export const createGig = async (req: AuthRequest, res: Response) => {
   try {
-    const { title, description, pay, requirements, difficulty, image, imagePublicId } = req.body;
+    const {
+      title,
+      description,
+      pay,
+      requirements,
+      difficulty,
+      image,
+      imagePublicId,
+    } = req.body;
 
     if (!title || !description || !pay || !requirements || !difficulty) {
       return res.status(400).json({
@@ -18,7 +26,8 @@ export const createGig = async (req: AuthRequest, res: Response) => {
     }
 
     // Capitalize difficulty to match schema enum
-    const capitalizedDifficulty = difficulty.charAt(0).toUpperCase() + difficulty.slice(1).toLowerCase();
+    const capitalizedDifficulty =
+      difficulty.charAt(0).toUpperCase() + difficulty.slice(1).toLowerCase();
 
     const gig = await Gig.create({
       creator: req.user!.userId,

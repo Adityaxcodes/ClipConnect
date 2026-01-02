@@ -1,7 +1,7 @@
 import { Response } from "express";
 import Application from "../models/Application.model";
 import Gig from "../models/Gig.model";
-import { AuthRequest } from "../middleware/auth.middleware";
+import { AuthRequest } from "../types/express";
 
 /**
  * APPLY TO A GIG
@@ -66,7 +66,9 @@ export const checkApplication = async (req: AuthRequest, res: Response) => {
     const { gigId } = req.params;
     const clipperId = req.user!.userId;
 
-    console.log(`Checking application for gig ${gigId} by clipper ${clipperId}`);
+    console.log(
+      `Checking application for gig ${gigId} by clipper ${clipperId}`,
+    );
 
     const application = await Application.findOne({
       gig: gigId,
@@ -106,8 +108,10 @@ export const getGigApplications = async (req: AuthRequest, res: Response) => {
       });
     }
 
-    const applications = await Application.find({ gig: gigId })
-      .populate("clipper", "email");
+    const applications = await Application.find({ gig: gigId }).populate(
+      "clipper",
+      "email",
+    );
 
     return res.status(200).json(applications);
   } catch (error) {
@@ -124,18 +128,13 @@ export const getGigApplications = async (req: AuthRequest, res: Response) => {
  */
 export const updateApplicationStatus = async (
   req: AuthRequest,
-  res: Response
+  res: Response,
 ) => {
   try {
     const { id } = req.params;
     const { status } = req.body;
 
-    const allowedStatuses = [
-      "ACCEPTED",
-      "REJECTED",
-      "WORKING",
-      "DONE",
-    ];
+    const allowedStatuses = ["ACCEPTED", "REJECTED", "WORKING", "DONE"];
 
     if (!allowedStatuses.includes(status)) {
       return res.status(400).json({
@@ -151,9 +150,7 @@ export const updateApplicationStatus = async (
       });
     }
 
-    if (
-      (application.gig as any).creator.toString() !== req.user!.userId
-    ) {
+    if ((application.gig as any).creator.toString() !== req.user!.userId) {
       return res.status(403).json({
         message: "Access denied",
       });
