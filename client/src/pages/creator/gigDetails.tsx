@@ -121,7 +121,7 @@ const GigDetails = () => {
         </div>
       </header>
 
-      <main className="container mx-auto px-4 py-8 max-w-6xl">
+      <main className="container mx-auto px-4 py-8 w-full">
         {applications.length === 0 ? (
           <Card>
             <CardContent className="pt-6 text-center py-16">

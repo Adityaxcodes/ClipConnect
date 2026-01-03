@@ -64,7 +64,7 @@ export default function CreatorDashboard() {
       </header>
 
       <main className="flex-1 overflow-auto p-6 md:p-10">
-        <div className="mx-auto max-w-7xl">
+        <div className="mx-auto w-full">
           <div className="mb-10 flex flex-col justify-between gap-4 md:flex-row md:items-end">
             <div>
               <h1 className="text-4xl font-bold tracking-tight">Creator Dashboard</h1>

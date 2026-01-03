@@ -163,7 +163,7 @@ const AllGigs = () => {
     <div className="min-h-screen bg-gray-50">
       {/* Header */}
       <div className="bg-white border-b border-gray-200">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+        <div className="w-full mx-auto px-4 sm:px-6 lg:px-8 py-6">
           <h1 className="text-3xl font-bold text-gray-900 mb-6">
             Available Gigs
           </h1>
@@ -223,7 +223,7 @@ const AllGigs = () => {
       </div>
 
       {/* Main Content */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <div className="w-full mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* Table Header */}
         <div className="bg-white rounded-t-lg border border-gray-200 px-6 py-4">
           <div className="grid grid-cols-12 gap-4 text-sm font-semibold text-gray-700">
