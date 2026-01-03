@@ -10,12 +10,24 @@ const app = express();
 
 app.use(
   cors({
-    origin: [
-      env.clientUrl,
-      "https://clip-connect-seven.vercel.app",
-      "http://localhost:5173",
-      "http://localhost:5174"
-    ],
+    origin: function (origin, callback) {
+      // Allow requests with no origin (like mobile apps or curl)
+      if (!origin) return callback(null, true);
+      
+      // List of allowed origins
+      const allowedOrigins = [
+        env.clientUrl,
+        "http://localhost:5173",
+        "http://localhost:5174"
+      ];
+      
+      // Check if origin is in allowed list or is a Vercel deployment
+      if (allowedOrigins.includes(origin) || origin.endsWith('.vercel.app')) {
+        callback(null, true);
+      } else {
+        callback(new Error('Not allowed by CORS'));
+      }
+    },
     credentials: true,
   })
 );
