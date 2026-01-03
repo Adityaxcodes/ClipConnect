@@ -23,15 +23,23 @@ app.use(
 app.use(express.json({ limit: '150mb' }));
 app.use(express.urlencoded({ limit: '150mb', extended: true }));
 
+// Request logging middleware
+app.use((req: Request, _res: Response, next: NextFunction) => {
+  console.log(`📥 ${req.method} ${req.path} - ${new Date().toISOString()}`);
+  next();
+});
+
 app.use("/api/auth", authRoutes);
 app.use("/api/gigs", gigRoutes);
 app.use("/api/applications", applicationRoutes);
 app.use("/api/upload", uploadRoutes);
 
 app.get("/health", (_req: Request, res: Response) => {
+  console.log("✅ Health check endpoint accessed");
   res.status(200).json({
     status: "OK",
     environment: env.nodeEnv,
+    timestamp: new Date().toISOString(),
   });
 });
 
