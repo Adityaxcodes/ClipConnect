@@ -1,14 +1,12 @@
 "use client";
-import React, { useState } from "react";
+import { useState } from "react";
 import { HoveredLink, Menu, MenuItem } from "../ui/navbar-menu";
 import { cn } from "../../utils/cn";
-import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
 import logo from "../../assets/FavIcon.png";
 
 export function Navbar({ className }: { className?: string }) {
   const [active, setActive] = useState<string | null>(null);
-  const navigate = useNavigate();
   const { logout } = useAuth();
 
   const handleLogout = () => {

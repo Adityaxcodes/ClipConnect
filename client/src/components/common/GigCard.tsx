@@ -26,7 +26,6 @@ export default function GigCard({ gig, variant = "clipper" }: GigCardProps) {
   const navigate = useNavigate();
   const [isApplying, setIsApplying] = useState(false);
   const [hasApplied, setHasApplied] = useState(false);
-  const [isCheckingStatus, setIsCheckingStatus] = useState(false);
   const [error, setError] = useState("");
 
   // Check if clipper has already applied to this gig
@@ -34,14 +33,11 @@ export default function GigCard({ gig, variant = "clipper" }: GigCardProps) {
     const checkApplicationStatus = async () => {
       if (variant !== "clipper") return;
 
-      setIsCheckingStatus(true);
       try {
         const { hasApplied: alreadyApplied } = await gigService.checkApplication(gig._id);
         setHasApplied(alreadyApplied);
       } catch (err) {
         console.error("Error checking application status:", err);
-      } finally {
-        setIsCheckingStatus(false);
       }
     };
 
