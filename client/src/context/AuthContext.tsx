@@ -12,8 +12,8 @@ export type Role = "CREATOR" | "CLIPPER";
 export type User = {
   id: string;
   email: string;
-  firstName: string;
-  lastName: string;
+  firstName?: string;
+  lastName?: string;
   role: Role;
 };
 
