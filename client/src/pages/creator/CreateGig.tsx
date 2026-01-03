@@ -8,6 +8,8 @@ import { Textarea } from "@/components/ui/textarea"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Card } from "@/components/ui/card"
 import { Upload, LinkIcon, X, ImageIcon, CheckCircle2 } from "lucide-react"
+
+const API_URL = import.meta.env.VITE_API_URL || "http://localhost:5000"
 import { gigService } from "@/services/gig.service"
 
 export default function CreateGig() {
@@ -87,7 +89,7 @@ export default function CreateGig() {
           formData.append("image", blob, fileName)
 
           // Upload to Cloudinary
-          const uploadResponse = await fetch("http://localhost:5000/api/upload/image", {
+          const uploadResponse = await fetch(`${API_URL}/api/upload/image`, {
             method: "POST",
             headers: {
               Authorization: `Bearer ${token}`,
