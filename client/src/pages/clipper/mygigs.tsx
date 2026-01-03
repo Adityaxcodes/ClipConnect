@@ -91,7 +91,7 @@ export default function ClipperMyGigs() {
     <div className="min-h-screen bg-background">
       {/* Header */}
       <header className="border-b border-border bg-card">
-        <div className="container mx-auto px-4 py-6">
+        <div className="w-full mx-auto px-4 py-6">
           <div className="flex items-center justify-between">
             <div>
               <h1 className="text-3xl font-bold text-foreground text-balance">My Applications</h1>
@@ -107,7 +107,7 @@ export default function ClipperMyGigs() {
       {/* Filters */}
       {applications.length > 0 && (
         <div className="border-b border-border bg-card/50">
-          <div className="container mx-auto px-4 py-4">
+          <div className="w-full mx-auto px-4 py-4">
             <div className="flex flex-col sm:flex-row gap-3">
               <div className="flex-1 relative">
                 <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
@@ -148,7 +148,7 @@ export default function ClipperMyGigs() {
       )}
 
       {/* Applications List */}
-      <main className="container mx-auto px-4 py-8">
+      <main className="w-full mx-auto px-4 py-8">
         {filteredApplications.length === 0 ? (
           <div className="text-center py-16">
             <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-muted mb-4">

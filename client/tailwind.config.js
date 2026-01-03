@@ -8,6 +8,10 @@ export default {
     "./node_modules/@nextui-org/theme/dist/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
+    container: {
+      center: false,
+      padding: '0',
+    },
     extend: {
       fontFamily: {
         heading: ['Poppins', 'sans-serif'],

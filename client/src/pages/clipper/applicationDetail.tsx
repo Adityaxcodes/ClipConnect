@@ -250,7 +250,7 @@ export default function ApplicationDetail() {
     <div className="min-h-screen bg-background">
       {/* Header */}
       <header className="border-b border-border bg-card">
-        <div className="container mx-auto px-4 py-6">
+        <div className="w-full mx-auto px-4 py-6">
           <Button
             variant="ghost"
             onClick={() => navigate("/clipper/my-gigs")}
@@ -264,7 +264,7 @@ export default function ApplicationDetail() {
         </div>
       </header>
 
-      <main className="container mx-auto px-4 py-8 w-full">
+      <main className="w-full mx-auto px-4 py-8">
         {/* Status Messages */}
         {error && (
           <div className="mb-6 p-4 bg-red-500/10 border border-red-500/20 rounded-lg flex items-start gap-3">
