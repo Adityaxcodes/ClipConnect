@@ -12,6 +12,7 @@ app.use(
   cors({
     origin: [
       env.clientUrl,
+      "https://clip-connect-seven.vercel.app",
       "http://localhost:5173",
       "http://localhost:5174"
     ],
