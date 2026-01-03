@@ -163,13 +163,13 @@ const AllGigs = () => {
     <div className="min-h-screen bg-gray-50">
       {/* Header */}
       <div className="bg-white border-b border-gray-200">
-        <div className="w-full mx-auto px-4 sm:px-6 lg:px-8 py-6">
-          <h1 className="text-3xl font-bold text-gray-900 mb-6">
+        <div className="w-full mx-auto px-3 sm:px-6 lg:px-8 py-4 md:py-6">
+          <h1 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4 md:mb-6">
             Available Gigs
           </h1>
 
           {/* Filters */}
-          <div className="flex flex-col sm:flex-row gap-3">
+          <div className="flex flex-col gap-2 md:gap-3">
             <div className="flex-1 relative">
               <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400" />
               <Input
@@ -181,23 +181,24 @@ const AllGigs = () => {
               />
             </div>
 
-            <Select value={statusFilter} onValueChange={setStatusFilter}>
-              <SelectTrigger className="w-full sm:w-[160px] bg-white">
-                <SelectValue placeholder="Status" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="all">All Status</SelectItem>
-                <SelectItem value="open">Open</SelectItem>
-                <SelectItem value="in progress">In Progress</SelectItem>
-                <SelectItem value="closed">Closed</SelectItem>
-              </SelectContent>
-            </Select>
+            <div className="grid grid-cols-2 gap-2 md:flex md:gap-3">
+              <Select value={statusFilter} onValueChange={setStatusFilter}>
+                <SelectTrigger className="bg-white">
+                  <SelectValue placeholder="Status" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="all">All Status</SelectItem>
+                  <SelectItem value="open">Open</SelectItem>
+                  <SelectItem value="in progress">In Progress</SelectItem>
+                  <SelectItem value="closed">Closed</SelectItem>
+                </SelectContent>
+              </Select>
 
-            <Select
-              value={difficultyFilter}
-              onValueChange={setDifficultyFilter}
-            >
-              <SelectTrigger className="w-full sm:w-[160px] bg-white">
+              <Select
+                value={difficultyFilter}
+                onValueChange={setDifficultyFilter}
+              >
+                <SelectTrigger className="bg-white">
                 <SelectValue placeholder="Difficulty" />
               </SelectTrigger>
               <SelectContent>

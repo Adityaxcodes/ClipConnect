@@ -40,13 +40,13 @@ export default function CreatorDashboard() {
     <div className="flex min-h-screen flex-col bg-black text-white">
       {/* Navigation Header */}
       <header className="sticky top-0 z-50 border-b border-white/10 bg-black/80 backdrop-blur-md">
-        <div className="flex h-16 items-center justify-between px-6">
-          <div className="flex items-center gap-8">
+        <div className="flex h-14 md:h-16 items-center justify-between px-3 md:px-6">
+          <div className="flex items-center gap-2 md:gap-8">
             <div className="flex items-center gap-2">
-              <div className="size-6 bg-white rotate-45 rounded-sm" />
-              <span className="font-bold tracking-tight">DESIGNALI</span>
+              <div className="size-5 md:size-6 bg-white rotate-45 rounded-sm" />
+              <span className="text-sm md:text-base font-bold tracking-tight">DESIGNALI</span>
             </div>
-            <nav className="hidden items-center gap-6 text-sm font-medium text-muted-foreground md:flex">
+            <nav className="hidden lg:flex items-center gap-6 text-sm font-medium text-muted-foreground">
               <span className="text-white">&gt;Observability</span>
               <span>Integrations</span>
               <span>Deployments</span>
@@ -63,25 +63,25 @@ export default function CreatorDashboard() {
         </div>
       </header>
 
-      <main className="flex-1 overflow-auto p-6 md:p-10">
+      <main className="flex-1 overflow-auto p-3 md:p-6 lg:p-10">
         <div className="mx-auto w-full">
-          <div className="mb-10 flex flex-col justify-between gap-4 md:flex-row md:items-end">
+          <div className="mb-6 md:mb-10 flex flex-col justify-between gap-4 md:flex-row md:items-end">
             <div>
-              <h1 className="text-4xl font-bold tracking-tight">Creator Dashboard</h1>
-              <p className="mt-2 text-muted-foreground">
+              <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold tracking-tight">Creator Dashboard</h1>
+              <p className="mt-1 md:mt-2 text-sm md:text-base text-muted-foreground">
                 Manage your gigs, track applications, and grow your creative business.
               </p>
             </div>
-            <div className="flex gap-3">
+            <div className="flex flex-col sm:flex-row gap-2 md:gap-3">
               <Button 
-                className="bg-white font-semibold text-black hover:bg-white/90"
+                className="bg-white font-semibold text-black hover:bg-white/90 w-full sm:w-auto text-sm md:text-base"
                 onClick={() => navigate('/creator/gigs/new')}
               >
                 <Plus className="mr-2 size-4" /> Create New Gig
               </Button>
               <Button 
                 variant="outline" 
-                className="border-white/10 bg-white/5"
+                className="border-white/10 bg-white/5 w-full sm:w-auto text-sm md:text-base"
                 onClick={() => navigate('/creator/gigs')}
               >
                 <Eye className="mr-2 size-4" /> View My Gigs
@@ -89,9 +89,9 @@ export default function CreatorDashboard() {
             </div>
           </div>
 
-          <div className="grid gap-6 md:grid-cols-[240px_1fr]">
+          <div className="grid gap-4 md:gap-6 lg:grid-cols-[240px_1fr]">
             {/* Sidebar Controls */}
-            <aside className="space-y-8">
+            <aside className="space-y-4 md:space-y-8">
               <div className="space-y-1">
                 <div className="flex items-center gap-2 rounded-lg bg-white/5 p-2 text-sm font-medium">
                   <BarChart3 className="size-4" /> Overview

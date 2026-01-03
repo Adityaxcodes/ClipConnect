@@ -104,7 +104,7 @@ export default function GigCard({ gig, variant = "clipper" }: GigCardProps) {
   return (
     <Card className="bg-gradient-to-br from-[#1f1f1f] to-[#1a1a1a] border border-gray-800/50 hover:border-gray-700/70 transition-all duration-300 shadow-xl hover:shadow-2xl rounded-2xl overflow-hidden">
       {gig.image && (
-        <div className="w-full h-48 overflow-hidden">
+        <div className="w-full h-40 sm:h-48 overflow-hidden">
           <img 
             src={gig.image} 
             alt={gig.title} 
@@ -112,9 +112,9 @@ export default function GigCard({ gig, variant = "clipper" }: GigCardProps) {
           />
         </div>
       )}
-      <CardHeader className="pb-2 pt-4 px-5 flex-col items-start gap-2">
+      <CardHeader className="pb-2 pt-3 md:pt-4 px-3 md:px-5 flex-col items-start gap-2">
         <div className="flex w-full justify-between items-start">
-          <h4 className="text-card-title text-white">{gig.title}</h4>
+          <h4 className="text-base md:text-lg font-bold text-white">{gig.title}</h4>
           {variant === "creator" && gig.status && (
             <Chip color={getStatusColor(gig.status)} size="sm" variant="flat">
               {gig.status}
@@ -132,19 +132,19 @@ export default function GigCard({ gig, variant = "clipper" }: GigCardProps) {
         </div>
       </CardHeader>
 
-      <CardBody className="py-3 px-5">
+      <CardBody className="py-2 md:py-3 px-3 md:px-5">
         <div className="flex flex-col gap-2">
           <div className="flex justify-between items-center">
-            <span className="text-muted text-gray-400">Pay:</span>
-            <span className="text-card-title text-green-400">
+            <span className="text-xs md:text-sm text-gray-400">Pay:</span>
+            <span className="text-base md:text-lg font-bold text-green-400">
               ${gig.pay}
             </span>
           </div>
 
           {variant === "clipper" && gig.creator && (
             <div className="flex justify-between items-center">
-              <span className="text-muted text-gray-400">Creator:</span>
-              <span className="text-body text-white">{gig.creator.email}</span>
+              <span className="text-xs md:text-sm text-gray-400">Creator:</span>
+              <span className="text-xs md:text-sm text-white truncate ml-2">{gig.creator.email}</span>
             </div>
           )}
 
