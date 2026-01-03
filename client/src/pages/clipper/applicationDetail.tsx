@@ -3,7 +3,6 @@ import { useParams, useNavigate } from "react-router-dom"
 import { gigService, type Application, type Gig } from "@/services/gig.service"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
-import { Label } from "@/components/ui/label"
 import { 
   ArrowLeft, 
   Upload, 

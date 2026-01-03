@@ -1,9 +1,11 @@
+import type {
+  ReactNode,
+} from "react";
 import {
   createContext,
   useContext,
   useEffect,
   useState,
-  ReactNode,
 } from "react";
 import { authService } from "../services/auth.service";
 

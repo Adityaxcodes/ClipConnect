@@ -1,5 +1,4 @@
 import {
-  Plus,
   Eye,
   Users,
   Briefcase,
