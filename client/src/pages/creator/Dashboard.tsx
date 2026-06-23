@@ -74,7 +74,7 @@ export default function CreatorDashboard() {
             </div>
             <div className="flex flex-col sm:flex-row gap-2 md:gap-3">
               <Button 
-                className="bg-white font-semibold text-black hover:bg-white/90 w-full sm:w-auto text-sm md:text-base"
+                className="bg-neutral-800 font-semibold text-white hover:bg-neutral-700 w-full sm:w-auto text-sm md:text-base"
                 onClick={() => navigate('/creator/gigs/new')}
               >
                 <Plus className="mr-2 size-4" /> Create New Gig

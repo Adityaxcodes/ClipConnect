@@ -25,6 +25,7 @@ interface AuthCardProps {
   onSocialLogin?: (provider: string) => void
   onForgotPassword?: () => void
   onClose?: () => void
+  defaultTab?: "signup" | "signin"
 }
 
 export function AuthCard({
@@ -46,8 +47,9 @@ export function AuthCard({
   onSocialLogin = () => {},
   onForgotPassword = () => {},
   onClose,
+  defaultTab = "signup",
 }: AuthCardProps) {
-  const [activeTab, setActiveTab] = useState("signup")
+  const [activeTab, setActiveTab] = useState(defaultTab)
   const [showPassword, setShowPassword] = useState(false)
   const [showSignupPassword, setShowSignupPassword] = useState(false)
   const [internalFirstName, setInternalFirstName] = useState("")
@@ -63,7 +65,7 @@ export function AuthCard({
 
   return (
     <div className="w-full max-w-lg mx-auto">
-      <div className="bg-black/40 backdrop-blur-xl border-2 border-white/20 rounded-4xl p-6 shadow-2xl transform transition-all duration-300 max-h-[97vh] overflow-y-auto">
+      <div className="bg-black/40 backdrop-blur-xl border-2 border-white/20 rounded-4xl p-6 shadow-2xl transform transition-all duration-300">
         {/* Header with tabs and close button */}
         <div className="flex items-center justify-between mb-6">
           <div className="flex bg-black/30 backdrop-blur-sm rounded-full p-1 border border-white/10">

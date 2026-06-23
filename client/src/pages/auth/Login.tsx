@@ -35,6 +35,7 @@ function Login() {
       }
     } catch (err: any) {
       console.error("Login failed:", err);
+      alert(err?.message || "Login failed. Please check your credentials.");
     } finally {
       setLoading(false);
     }
@@ -47,9 +48,10 @@ function Login() {
 
   return (
     <BackgroundGradientAnimation>
-      <div className="absolute z-50 inset-0 flex items-center justify-center px-4">
+      <div className="absolute z-50 inset-0 flex items-center justify-center px-4 overflow-y-auto py-8">
         <AuthCard
           isLoading={loading}
+          defaultTab="signin"
           email={formData.email}
           setEmail={(email) => setFormData({ ...formData, email })}
           password={formData.password}

@@ -199,26 +199,27 @@ const AllGigs = () => {
                 onValueChange={setDifficultyFilter}
               >
                 <SelectTrigger className="bg-white">
-                <SelectValue placeholder="Difficulty" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="all">All Levels</SelectItem>
-                <SelectItem value="easy">Easy</SelectItem>
-                <SelectItem value="medium">Medium</SelectItem>
-                <SelectItem value="hard">Hard</SelectItem>
-              </SelectContent>
-            </Select>
+                  <SelectValue placeholder="Difficulty" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="all">All Levels</SelectItem>
+                  <SelectItem value="easy">Easy</SelectItem>
+                  <SelectItem value="medium">Medium</SelectItem>
+                  <SelectItem value="hard">Hard</SelectItem>
+                </SelectContent>
+              </Select>
 
-            <Select value={sortBy} onValueChange={setSortBy}>
-              <SelectTrigger className="w-full sm:w-[160px] bg-white">
-                <SelectValue placeholder="Sort by" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="recent">Most Recent</SelectItem>
-                <SelectItem value="pay-high">Highest Pay</SelectItem>
-                <SelectItem value="pay-low">Lowest Pay</SelectItem>
-              </SelectContent>
-            </Select>
+              <Select value={sortBy} onValueChange={setSortBy}>
+                <SelectTrigger className="w-full sm:w-40 bg-white">
+                  <SelectValue placeholder="Sort by" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="recent">Most Recent</SelectItem>
+                  <SelectItem value="pay-high">Highest Pay</SelectItem>
+                  <SelectItem value="pay-low">Lowest Pay</SelectItem>
+                </SelectContent>
+              </Select>
+            </div>
           </div>
         </div>
       </div>
@@ -259,7 +260,7 @@ const AllGigs = () => {
                 {/* Gig Info - Left Side */}
                 <div className="col-span-12 sm:col-span-6 flex gap-4">
                   {/* Image */}
-                  <div className="flex-shrink-0 w-24 h-24 sm:w-28 sm:h-28 bg-gradient-to-br from-gray-100 to-gray-200 rounded-lg overflow-hidden">
+                  <div className="shrink-0 w-24 h-24 sm:w-28 sm:h-28 bg-linear-to-br from-gray-100 to-gray-200 rounded-lg overflow-hidden">
                     {gig.image ? (
                       <img
                         src={gig.image}
@@ -346,7 +347,7 @@ const AllGigs = () => {
                         >
                           <Minus className="h-4 w-4 text-white" />
                         </button>
-                        <span className="px-4 text-white font-medium min-w-[3rem] text-center">
+                        <span className="px-4 text-white font-medium min-w-12 text-center">
                           {quantities[gig._id] || 1}
                         </span>
                         <button
@@ -411,4 +412,4 @@ const AllGigs = () => {
   );
 };
 
-export default AllGigs;
+export default AllGigs; 
