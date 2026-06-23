@@ -13,7 +13,7 @@ import { authorizeRoles } from "../middleware/role.middleware";
 
 const router = Router();
 
-// Clipper gets their own applications
+// Clipper gets their own applications (GET /my)
 router.get(
   "/my",
   authenticate,
@@ -21,7 +21,7 @@ router.get(
   getMyApplications
 );
 
-// Check if clipper has already applied to a gig (Clipper only)
+// Check if clipper has already applied to a gig (Clipper only) - MUST come before /:gigId
 router.get(
   "/check/:gigId",
   authenticate,
@@ -29,7 +29,7 @@ router.get(
   checkApplication
 );
 
-// Clipper applies to gig
+// Clipper applies to gig (POST /:gigId)
 router.post(
   "/:gigId",
   authenticate,
